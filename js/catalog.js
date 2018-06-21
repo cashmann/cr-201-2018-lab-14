@@ -1,4 +1,4 @@
-/* global Product, Cart */
+/* global Product, CartItem */
 
 'use strict';
 
@@ -11,7 +11,7 @@ function populateForm() {
   for (var i in Product.allProducts) {
     var opt = document.createElement('option');
     opt.innerText = Product.allProducts[i].name;
-   selectElement.appendChild(opt);
+    selectElement.appendChild(opt);
     
   }
 
@@ -23,7 +23,7 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   saveCartToLocalStorage();
@@ -35,21 +35,49 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  var itemSelector = document.getElementById('items');
+  var cartItems = itemSelector.options[itemSelector.selectedIndex].text;
+  
   // TODO: get the quantity
+  var itemQuan = document.querySelector('#quantity');
+  var quantity = parseInt(itemQuan.value);
+  console.log(cartItems, quantity);
   // TODO: using those, create a new Cart item instance
+  new CartItem(cartItems, quantity);
+  //console.log(new CartItem(cartItems, quantity));
+  console.log(CartItem.allItems);
 }
 
 // TODO: Save the contents of the cart to Local Storage
 function saveCartToLocalStorage() {
-
+  localStorage['cartItems'] = JSON.stringify(CartItem.allItems);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  var count = 0;
+  for(var i=0; i<CartItem.allItems.length; i++){
+    var itemCount = CartItem.allItems[i].quantity;
+    count += itemCount;
+  }
+  console.log(count);
+  var counter = document.querySelector('#itemCount');
+  counter.innerText = count;
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  var cartContents = document.querySelector('#cartContents');
+  cartContents.innerHTML = '';
+  for(var i=0; i<CartItem.allItems.length; i++){
+    var itemName = CartItem.allItems[i].item;
+    var itemQuantity = CartItem.allItems[i].quantity;
+    var li = document.createElement('li');
+    li.innerText = itemName + ':' + itemQuantity;
+    cartContents.appendChild(li);
+  }
+ 
   // TODO: Add a new element to the cartContents div with that information
 }
 
