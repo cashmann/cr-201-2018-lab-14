@@ -61,6 +61,8 @@ function updateCounter() {
     count += itemCount;
   }
   console.log(count);
+  var counter = document.querySelector('#itemCount');
+  counter.innerText = count;
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
