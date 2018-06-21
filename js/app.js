@@ -2,7 +2,7 @@
 
 'use strict';
 
-// TODO: Create a "Cart" constructor (named Cart) that has item and quantity
+// TODO: Create a "CartItem" constructor (named CartItem) that has item and quantity
 // properties, and builds an array of items as you create instances
 
 
