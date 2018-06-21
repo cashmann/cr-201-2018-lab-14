@@ -11,7 +11,7 @@ function populateForm() {
   for (var i in Product.allProducts) {
     var opt = document.createElement('option');
     opt.innerText = Product.allProducts[i].name;
-   selectElement.appendChild(opt);
+    selectElement.appendChild(opt);
     
   }
 
@@ -23,7 +23,7 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   saveCartToLocalStorage();
