@@ -1,1 +1,39 @@
 /* TODO: Make it awesome */
+body{
+    background-color: cornflowerblue;
+    width:940px; margin:20px auto;
+}
+
+main {
+   
+    width:900px; margin:0 auto; background-color:#fff;
+ }
+
+
+header{
+    background-color: azure;
+    margin-bottom: 15px;
+}
+section{
+    display: inline-block;
+    height: 200px;
+    
+}
+.card{
+    background-color: greenyellow;
+
+}
+
+.col-1 {
+float: left;
+width: 50%;
+}
+.col-2{
+float: right;
+width: 50%;  
+}
+
+footer{
+    background-color: azure;
+    margin-top: 15px;
+}
