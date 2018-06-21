@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
 var Cart = [];
 
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
-var table = document.getElementById('cart');
-table.addEventListener('click', removeItemFromCart);
+var table = document.getElementById("cart");
+table.addEventListener("click", removeItemFromCart);
 
 function loadCart() {
-  Cart = JSON.parse(localStorage.getItem('cart')) || [];
+  Cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -18,19 +18,41 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  var cartTable = document.querySelectorAll("#cart tr");
+  cartTable.innerHTML = " ";
+
+
+
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-
   // TODO: Find the table body
-
+  var tbody = document.querySelector("tbody");
   // TODO: Iterate over the items in the cart
+  for(var i=0; i < Cart.length; i++){
   // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
-
+    var tr = document.createElement("tr");
+    tbody.appendChild(tr);
+    for(var j = 0; j < 3; j++){
+      var td = document.createElement("td");
+      tr.appendChild(td);
+    }
+    var removalTd = document.querySelectorAll('td:nth-of-type(3n+1)');
+    removalTd.innerHTML = "<a href='#'>Delete Contents</a>";
+    var quantityTd = document.querySelectorAll('td:nth-of-type(3n+2)');
+    quantityTd.innerHTML = Cart[i].quantity;
+    var itemTd = document.querySelectorAll('td:nth-of-type(3n+3)');
+    itemTd.innerText = Cart[i].item;
+  }
 }
+
+  
+// TODO: Create a TD for the delete link, quantity,  and the item
+// TODO: Add the TR to the TBODY and each of the TD's to the TR
+
+
 
 function removeItemFromCart(event) {
 
