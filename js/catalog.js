@@ -40,7 +40,7 @@ function addSelectedItemToCart() {
   
   // TODO: get the quantity
   var itemQuan = document.querySelector('#quantity');
-  var quantity = itemQuan.value;
+  var quantity = parseInt(itemQuan.value);
   console.log(cartItems, quantity);
   // TODO: using those, create a new Cart item instance
   new CartItem(cartItems, quantity);
@@ -55,9 +55,10 @@ function saveCartToLocalStorage() {
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
+  var count = 0;
   for(var i=0; i<CartItem.allItems.length; i++){
-    var count = 0;
-    count += CartItem.allItems[i];
+    var itemCount = CartItem.allItems[i].quantity;
+    count += itemCount;
   }
   console.log(count);
 }
