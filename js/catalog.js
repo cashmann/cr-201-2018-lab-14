@@ -69,6 +69,7 @@ function updateCounter() {
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   var cartContents = document.querySelector('#cartContents');
+  cartContents.innerHTML = '';
   for(var i=0; i<CartItem.allItems.length; i++){
     var itemName = CartItem.allItems[i].item;
     var itemQuantity = CartItem.allItems[i].quantity;
