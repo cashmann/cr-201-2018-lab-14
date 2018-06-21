@@ -1,4 +1,4 @@
-/* global Product, Cart */
+/* global Product, CartItem */
 
 'use strict';
 
@@ -37,18 +37,22 @@ function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
   var itemSelector = document.getElementById('items');
   var cartItems = itemSelector.options[itemSelector.selectedIndex].text;
-
+  
   // TODO: get the quantity
   var itemQuan = document.querySelector('#quantity');
   var quantity = itemQuan.value;
+  console.log(cartItems, quantity);
   // TODO: using those, create a new Cart item instance
   new CartItem(cartItems, quantity);
   //console.log(new CartItem(cartItems, quantity));
- 
+  console.log(CartItem.allItems);
 }
 
 // TODO: Save the contents of the cart to Local Storage
 function saveCartToLocalStorage() {
+  localStorage.clear();
+  localStorage['cartItems'] = JSON.stringify(CartItem.allItems);
+  localStorage['itemQuantity'] = JSON.stringify({quantity: CartItem.allItems});
 
 }
 
