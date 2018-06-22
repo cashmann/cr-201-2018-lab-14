@@ -1,4 +1,10 @@
 /* TODO: Make it awesome */
+* {
+	box-sizing: border-box;
+}
+h1{float: left;
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;}
 body{
     background-color: cornflowerblue;
     width:940px; margin:20px auto;
@@ -6,27 +12,59 @@ body{
 
 main {
    
-    width:900px; margin:0 auto; background-color:#fff;
+    width:960px; margin:0 auto; background-color:#fff;
  }
 
 
 header{
-    background-color: azure;
+    position: relative;
+    background-color: rgb(34, 156, 156);
     margin-bottom: 15px;
+	color: #fff;
+    padding: 20px;
+    width: 960px;
+    height: 75px;
+	
 }
+
+nav ul {
+    position:absolute;
+    margin-left: 230px;
+   
+}
+
+nav ul li {
+	
+	float: left;
+	padding-right: 15px;
+	list-style-type: none;
+}
+
+a {
+    
+    font-size: 24px;
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+    text-decoration: none;
+}
+
 section{
-    display: inline-block;
-    height: 200px;
+    position: relative;
     
 }
 .card{
+    
+    height: 200px;
     background-color: greenyellow;
 
 }
 
+
+
 .col-1 {
 float: left;
 width: 50%;
+
 }
 .col-2{
 float: right;
@@ -36,4 +74,11 @@ width: 50%;
 footer{
     background-color: azure;
     margin-top: 15px;
+    position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	text-align: center;
+	color: #000;
 }
