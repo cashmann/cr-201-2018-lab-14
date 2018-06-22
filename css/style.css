@@ -4,10 +4,16 @@
 }
 h1{float: left;
     font-family: 'Pacifico', cursive;
-    font-size: 18px;}
+    font-size: 18px;
+    /* margin-bottom:75px; */
+
+}
+
+
+
 body{
-    background-color: cornflowerblue;
-    width:940px; margin:20px auto;
+    background-color: rgba(95, 126, 182, 0.671);
+    width:960px; margin:20px auto;
 }
 
 main {
@@ -39,7 +45,19 @@ nav ul li {
 	padding-right: 15px;
 	list-style-type: none;
 }
+ol{margin-top:20px;
+    height:200px;
 
+}
+ol li {
+	
+	
+	padding: 15px;
+	list-style-type: none;
+}
+.copy {margin-top:20px;
+      height: 200px;
+}
 a {
     
     font-size: 24px;
@@ -49,17 +67,20 @@ a {
 }
 
 section{
-    position: relative;
+    /* position: relative; */
     
 }
 .card{
     
-    height: 200px;
+ 
     background-color: greenyellow;
 
 }
+ 
 
-
+.deck{
+    /* clear: both; */
+}
 
 .col-1 {
 float: left;
@@ -67,6 +88,8 @@ width: 50%;
 
 }
 .col-2{
+    padding-top: 55px;
+    
 float: right;
 width: 50%;  
 }
