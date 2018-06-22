@@ -19,7 +19,7 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  var cartTable = document.querySelectorAll("#cart tr");
+  var cartTable = document.querySelector("#cart tr");
   cartTable.innerHTML = " ";
 
 
@@ -35,16 +35,15 @@ function showCart() {
   // TODO: Create a TR
     var tr = document.createElement("tr");
     tbody.appendChild(tr);
-    for(var j = 0; j < 3; j++){
-      var td = document.createElement("td");
-      tr.appendChild(td);
-    }
-    var removalTd = document.querySelectorAll('td:nth-of-type(3n+1)');
+    var removalTd = document.createElement('td');
     removalTd.innerHTML = "<a href='#'>Delete Contents</a>";
-    var quantityTd = document.querySelectorAll('td:nth-of-type(3n+2)');
-    quantityTd.innerHTML = Cart[i].quantity;
-    var itemTd = document.querySelectorAll('td:nth-of-type(3n+3)');
+    tr.appendChild(removalTd);
+    var quantityTd = document.createElement('td');
+    quantityTd.innerText = Cart[i].quantity;
+    tr.appendChild(quantityTd);
+    var itemTd = document.createElement('td');
     itemTd.innerText = Cart[i].item;
+    tr.appendChild(itemTd);
   }
 }
 
