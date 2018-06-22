@@ -19,8 +19,12 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  var cartTable = document.querySelectorAll("#cart tr");
-  cartTable.innerHTML = " ";
+  var cartTable = document.querySelectorAll("#cart tbody tr");
+  if(cartTable){
+    for(var i=0; i<cartTable.length; i++){
+      cartTable[i].innerHTML = " ";
+    }
+  }
 
 
 
@@ -35,16 +39,15 @@ function showCart() {
   // TODO: Create a TR
     var tr = document.createElement("tr");
     tbody.appendChild(tr);
-    for(var j = 0; j < 3; j++){
-      var td = document.createElement("td");
-      tr.appendChild(td);
-    }
-    var removalTd = document.querySelectorAll('td:nth-of-type(3n+1)');
-    removalTd.innerHTML = "<a href='#'>Delete Contents</a>";
-    var quantityTd = document.querySelectorAll('td:nth-of-type(3n+2)');
-    quantityTd.innerHTML = Cart[i].quantity;
-    var itemTd = document.querySelectorAll('td:nth-of-type(3n+3)');
+    var removalTd = document.createElement('td');
+    removalTd.innerHTML = "<a class='delete' id='" + i +"' href='#'>Delete Contents</a>";
+    tr.appendChild(removalTd);
+    var itemTd = document.createElement('td');
     itemTd.innerText = Cart[i].item;
+    tr.appendChild(itemTd);
+    var quantityTd = document.createElement('td');
+    quantityTd.innerText = Cart[i].quantity;
+    tr.appendChild(quantityTd);
   }
 }
 
@@ -57,6 +60,13 @@ function showCart() {
 function removeItemFromCart(event) {
 
   // TODO: When a delete link is clicked, rebuild the Cart array without that item
+  var target = event.target;
+  var targetValue = parseInt(target.id);
+  console.log(targetValue);
+  Cart.splice(targetValue, 1);
+  console.log(Cart);
+  localStorage['cartItems'] = JSON.stringify(Cart);
+  renderCart();
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
 
